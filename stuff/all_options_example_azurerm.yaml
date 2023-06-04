@@ -1,0 +1,48 @@
+- name: "nsg-isolated"
+  resource_name: "isolated"
+  location: "australiaeast"
+  resource_group_name: "rg-connectivity-isolated-test-ae"
+  virtual_network_name: "vnet-connectivity-isolated-test"
+  provider:  shared-svc-prod
+  subnet_network_security_group_associations: 
+    - name: "nsg-isolated-to-subnet-azuremigrate-test-isolated"
+      subnet_name: "subnet-gwlb-consumer-app1"
+  # network_interface_security_group_associations: 
+  #   - network_interface_name: "vm1-nic"
+  tags:
+    cost_center: "1234"
+    environment: "prod"
+    security_dimension: "internal-corp"
+  security_rules:
+    - name: "DenyAllInbound"
+      description: "DenyAllInbound"
+      direction: "Inbound" # Inbound / Outbound
+      access: "Deny" # Allow / Deny
+      priority: 100
+      source_address_prefix: "*"
+      destination_address_prefix: "*"
+      #source_address_prefixes: "10.0.0.0/24,192.168.0.0/24"
+      #destination_address_prefixes: "172.16.0.0/16"
+      source_port_range: "*"
+      destination_port_range: "*"
+      #source_port_ranges: "1024-1052,1096-65494"
+      #destination_port_ranges: "135-137"
+      protocol: "*" # Tcp, Udp, Icmp, or *
+      #source_application_security_group_ids: "/../../asg_1, ..."
+      #destination_application_security_group_ids:
+    - name: "AllowICMPIn"
+      description: "AllowICMPIn"
+      direction: "Inbound" # Inbound / Outbound
+      access: "Allow" # Allow / Deny
+      priority: 100
+      source_address_prefix: "*"
+      destination_address_prefix: "*"
+      #source_address_prefixes: "10.0.0.0/8,192.168.0.0/16"
+      #destination_address_prefixes: "172.16.0.0/16"
+      source_port_range: "*"
+      destination_port_range: "*"
+      #source_port_ranges: "1024-1052,1096-65494"
+      #destination_port_ranges: "135-137"
+      protocol: "ICMP" # Tcp, Udp, Icmp, or *
+      #source_application_security_group_ids: "/../../asg_1, ..."
+      #destination_application_security_group_ids:

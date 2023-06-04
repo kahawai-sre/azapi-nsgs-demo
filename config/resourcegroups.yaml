@@ -1,0 +1,17 @@
+- name: "rg-mgmt-nsgs"
+  sub_name: "eslz-management" # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  location: "australiaeast"
+  tags: 
+    billing_code: "demo"
+
+- name: "rg-connectivity-nsgs"
+  sub_name: "eslz-connectivity" # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  location: "australiaeast"
+  tags: 
+    billing_code: "test"
+
+- name: "rg-identity-nsgs"
+  sub_name: "eslz-identity-infosec" # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  location: "australiaeast"
+  tags: 
+    billing_code: "test"

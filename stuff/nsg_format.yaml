@@ -1,0 +1,34 @@
+
+# ! Example format: encoding the example below from yaml => JSON: should give valid syntax for "securityRules" portaion of prperties for AzApi deployment:
+securityRules:
+  - name: rule1
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Inbound
+
+# ! i.e. => Destination JSON:
+
+# {"securityRules": [
+#   {
+#     "name": "rule1",
+#     "properties": {
+#       "protocol": "*",
+#       "sourceAddressPrefix": "*",
+#       "destinationAddressPrefix": "*",
+#       "access": "Allow",
+#       "destinationPortRange": "80",
+#       "sourcePortRange": "*",
+#       "priority": 130,
+#       "direction": "Inbound"
+#     }
+#   }
+# ]
+# }
+
+#  https://learn.microsoft.com/en-us/azure/templates/microsoft.network/networksecuritygroups?pivots=deployment-language-terraform

@@ -1,0 +1,92 @@
+- name: "nsg-allow-all-mgmt"
+  sub_name: "eslz-management" # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  rg_name: "rg-mgmt-nsgs" # <<== Name of the target resource group for the NSG. Must be part of this TF deployment, or already exist
+  location: "australiaeast"
+  subnet_network_security_group_associations: 
+    # - name: "nsg-allow-all-to-subnet-gwlb-ae"
+    #   subnet_id: "subnet-gwlb-ae"
+  tags:
+  flushConnection: false
+  securityRules:
+  - name: rule1
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Inbound
+  - name: rule2
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Outbound
+
+- name: "nsg-allow-all-connectivity"
+  sub_name: "eslz-connectivity" # # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  rg_name: "rg-connectivity-nsgs" # <<== Name of the target resource group for the NSG. Must be part of this TF deployment, or already exist
+  location: "australiaeast"
+  subnet_network_security_group_associations:
+    # - name: "nsg-allow-all-to-subnet-gwlb-ae"
+    #   subnet_id: "subnet-gwlb-ae"
+  tags:
+  flushConnection: false
+  securityRules:
+  - name: rule1
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Inbound
+  - name: rule2
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Outbound
+
+- name: "nsg-allow-all-identity"
+  sub_name: "eslz-identity-infosec" # # <<== Display name of target subscription. Update to match your own. Subscription display names should not be used to define resources in production deployments, they can change.
+  rg_name: "rg-identity-nsgs" # <<== Name of the target resource group for the NSG. Must be part of this TF deployment, or already exist
+  location: "australiaeast"
+  subnet_network_security_group_associations:
+    # - name: "nsg-allow-all-to-subnet-gwlb-ae"
+    #   subnet_id: "subnet-gwlb-ae"
+  tags:
+  flushConnection: false
+  securityRules:
+  - name: rule1
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Inbound
+  - name: rule2
+    properties:
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      destinationAddressPrefix: '*'
+      access: Allow
+      destinationPortRange: '80'
+      sourcePortRange: '*'
+      priority: 130
+      direction: Outbound
