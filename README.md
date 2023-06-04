@@ -1,7 +1,7 @@
 # azapi-nsgs-demo
 Example of using Azure AzAPI TF provider to deploy NSGs across multiple subscriptions, via a single module loop, passing parent id (target subscription and resource group) 'dynamically'.
-- Arguably one of the nice features of AzAPI resource blocks is that they are optionally decoupled from the AzureRM provider limitation of scoping code blocks and for_each loops *per subscription*, where deployments need to span multiple subs
-- For Azure resource provider REST APIs where a given resource includes a "parent_id" property, which can be passed through at call time, this gets around having to duplicate code blocks per AzureRM provider which might be desirable for higher-scale resource deployments that span many target subscriotions
+- AzAPI resource blocks (vs AzureRM) are optionally decoupled from the limitation of scoping resource and module blocks with for_each loops *per subscription*, where deployments may need to span multiple subs
+- For Azure resource provider REST APIs where a given resource includes a "parent_id" property, which can be passed through at call time, this gets around having to duplicate code blocks (per AzureRM provider), which might be desirable for higher-scale resource deployments that span many target subscriptions
 - Example is NSGs and dependencies which are subscription-specific (scoped per sub)
 - Example is not yet complete - need to adapt AzureRM code for deploying ASGs, and NSG=>subnet/NSG=>vNIC association configurations to AzAPI so example is fully self contained for managing all of these at scale with minimal lines of code.
 ## Constructs
